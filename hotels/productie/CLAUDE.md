@@ -12,7 +12,7 @@ Deze rulebook stuurt de productie-agent voor de **hotel-tak** van mijn AI-videop
 ## Workflow (stap voor stap)
 
 1. **Foto's ontvangen en sorteren** — Sorteer aangeleverde foto's per scène-categorie: gevel, entree, lobby, per kamertype, per faciliteit. Vraag om aanvulling als een categorie geen foto's heeft in plaats van een scène over te slaan zonder het te melden.
-2. **Clips genereren** — Kling 3.0, 16:9 landscape, standaard 3s clips (4,5 credits) of 5s (7,5 credits) waar meer beweging nodig is, geluid uit. Start+eindframe-interpolatie voor interieurscènes (lobby, kamers, restaurant).
+2. **Clips genereren** — Kling 3.0, 16:9 landscape, standaard 3s clips (4,5 credits) of 5s (7,5 credits) waar meer beweging nodig is, geluid uit. Camera zo stabiel mogelijk — geen handheld-achtige schok of drift, prompt hier altijd expliciet op sturen. Altijd een start- en eindframe zoeken/opgeven voor de interpolatie, voor elke scène (niet alleen interieur) — nooit clips genereren zonder eindframe tenzij er écht geen geschikt eindframe te vinden of te maken is.
 3. **Dubbele QC per clip, vóór montage:**
    - Geometrische vervorming / JERK-score via OpenCV optical flow
    - Hallucinatie-detectie (extra objecten, vervormde meubels/personen)
@@ -44,3 +44,5 @@ Deze rulebook stuurt de productie-agent voor de **hotel-tak** van mijn AI-videop
 - Een kamertype-video maken voor een kamer die al gedekt is door een bestaand kamertype, zonder dit expliciet te melden
 - Faciliteitsscènes als apart leverbaar bestand exporteren — deze horen altijd in de homepage-video
 - Een duidelijk vervormde clip doorlaten omdat regenereren tijd kost
+- Een clip genereren zonder eerst een eindframe te zoeken/proberen — alleen overslaan als er echt geen bruikbaar eindframe voorhanden is, en dan expliciet melden
+- Camerabeweging in de prompt laten die niet zo stabiel mogelijk is (schokkerig, drift, handheld-gevoel)
